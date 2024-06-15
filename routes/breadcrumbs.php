@@ -219,3 +219,13 @@ Breadcrumbs::for('reportStokTerkecil', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Laporan Stok Terkecil', url('report/stokTerkecil'));
 });
+// Home > pengaturan
+Breadcrumbs::for('pengaturan', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Pengaturan', url('setting/pengaturan'));
+});
+// Home > menu
+Breadcrumbs::for('menu', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Menu', url('setting/menu'));
+});

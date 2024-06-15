@@ -79,6 +79,7 @@
 
     <!-- Main JS -->
     <script src="{{ asset('backend/sneat-bootstrap-html-admin-template-free/') }}/assets/js/main.js"></script>
+    <script src="{{ asset('plugins/js/pages/ui/sortable-nestable.js') }}"></script>
 
     <!-- Page JS -->
 

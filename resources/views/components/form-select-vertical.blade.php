@@ -1,8 +1,9 @@
-@props(['label', 'name', 'data' => [], 'value' => '', 'disabled' => ''])
+@props(['label', 'name', 'data' => [], 'value' => '', 'disabled' => '', 'class' => ''])
 
 <div class="form-group mb-3">
     <label for="{{ $name }}" class="form-label">{{ $label }}</label>
-    <select name="{{ $name }}" class="form-select" id="{{ $name }}" {{ $disabled }}>
+    <select name="{{ $name }}" class="form-select {{ $class }}" id="{{ $name }}"
+        {{ $disabled }}>
         <option selected value="">-- Pilih {{ $label }} --</option>
         @foreach ($data as $index => $item)
             @php

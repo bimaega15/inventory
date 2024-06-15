@@ -1,3 +1,6 @@
+@php
+    $settingApp = UtilsHelp::settingApp();
+@endphp
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="index.html" class="app-brand-link">
@@ -5,7 +8,7 @@
 
             </span>
             <span class="app-brand-text demo menu-text fw-bold ms-0"
-                style="text-transform: capitalize; font-size: 22px;">Inventory App</span>
+                style="text-transform: capitalize; font-size: 22px;">{{ $settingApp->namaaplikasi_pengaturan }}</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -322,12 +325,26 @@
                 <div data-i18n="Role">Role</div>
             </a>
         </li>
-        {{-- <li class="menu-item {{ request()->is('setting/app') ? 'active' : '' }}">
-            <a href="{{ url('setting/app') }}" class="menu-link">
-                <i class='menu-icon tf-icons bx bxs-cube-alt'></i>
+        <li class="menu-item {{ request()->is('setting/pengaturan') ? 'active' : '' }}">
+            <a href="{{ url('setting/pengaturan') }}" class="menu-link">
+                <i class='menu-icon tf-icons bx bxs-detail'></i>
+                <div data-i18n="Profile">Profile</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bxs-lock"></i>
                 <div data-i18n="Pengaturan">Pengaturan</div>
             </a>
-        </li> --}}
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('setting/menu') ? 'active' : '' }}">
+                    <a href="{{ url('setting/menu') }}" class="menu-link">
+                        <div data-i18n="Menu">Menu</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <li class="menu-item {{ request()->is('setting/logout') ? 'active' : '' }}">
             <a href="{{ url('setting/logout') }}" class="menu-link">
                 <i class='menu-icon tf-icons bx bx-log-out'></i>

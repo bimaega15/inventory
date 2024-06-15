@@ -9,7 +9,8 @@
                     <x-form-input-horizontal label="Username" name="username" placeholder="Username..."
                         value="{{ isset($row) ? $row->username ?? '' : '' }}" />
 
-                    <x-form-input-horizontal type="number" label="No. HP" name="nohp_profile" placeholder="No. Handphone..."
+                    <x-form-input-horizontal type="number" label="No. HP" name="nohp_profile"
+                        placeholder="No. Handphone..."
                         value="{{ isset($row) ? $row->profile->nohp_profile ?? '' : '' }}" />
 
                     <x-form-textarea-horizontal label="Alamat" name="alamat_profile" placeholder="Alamat..."
@@ -35,8 +36,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <div class="row justify-content-end">
-                <div class="col-sm-12">
+            <div class="d-flex justify-content-end">
+                <div>
                     <x-button-cancel-modal />
                     <x-button-submit-modal />
                 </div>

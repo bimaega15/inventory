@@ -1,3 +1,6 @@
+@php
+    $settingApp = UtilsHelp::settingApp();
+@endphp
 <!DOCTYPE html>
 
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default"
@@ -12,11 +15,11 @@
 
     <title>@yield('title')</title>
 
-    <meta name="description" content="" />
+    <meta name="description" content="{{ $settingApp->deskripsi_pengaturan }}" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon"
-        href="{{ asset('backend/sneat-bootstrap-html-admin-template-free') }}/assets/img/favicon/favicon.ico" />
+        href="{{ asset('upload/setting/' . $settingApp->logoaplikasi_pengaturan) }}" alt="Logo Aplikasi" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,6 +56,8 @@
     <link rel="stylesheet" href="{{ asset('library/sweetalert2/dist/sweetalert2.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('library/bootstrap-datepicker-master/dist/css/bootstrap-datepicker.min.css') }}">
+    <link href="{{ asset('library/nestable/jquery-nestable.css') }}" rel="stylesheet" />
+
     @stack('custom_css')
 
     <!-- Helpers -->
@@ -141,7 +146,8 @@
     <script src="{{ asset('library/jQuery-Plugin-To-Print-Any-Part-Of-Your-Page-Print/dist/jQuery.print.min.js') }}">
     </script>
     <script src="{{ asset('library/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js') }}"></script>
-
+    <script src="{{ asset('library/nestable/jquery.nestable.js') }}"></script>
+    <script src="{{ asset('library/nestable/sortable-nestable.js') }}"></script>
     <script>
         $.ajaxSetup({
             headers: {

@@ -1,6 +1,7 @@
 @php
     $myProfile = UtilsHelp::myProfile();
     $roles = $myProfile->roles[0]->name;
+    $settingApp = UtilsHelp::settingApp();
 @endphp
 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
     id="layout-navbar">
@@ -20,7 +21,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar">
-                        <img src="{{ asset('upload/profile/profile.jpg') }}" alt
+                        <img src="{{ asset('upload/setting/'.$settingApp->logoaplikasi_pengaturan) }}" alt="Logo Aplikasi"
                             class="w-px-40 h-auto rounded-circle" />
                     </div>
                 </a>
@@ -30,7 +31,7 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar">
-                                        <img src="{{ asset('upload/profile/profile.jpg') }}" alt
+                                        <img src="{{ asset('upload/setting/'.$settingApp->logoaplikasi_pengaturan) }}" alt="Logo Aplikasi"
                                             class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
