@@ -41,7 +41,6 @@ class MyProfileController extends Controller
             'email' => $request->input('email'),
             'username' => $request->input('username'),
             'password' => $password_db,
-            'status_users' => $request->input('status_users') !== null ? true : false,
         ];
         $users = User::find($id)->update($data);
 

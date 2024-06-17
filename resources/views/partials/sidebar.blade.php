@@ -183,14 +183,14 @@
                     </a>
                 </li>
 
-                <li class="menu-item {{ request()->is('master/kategoriPembayaran') ? 'active' : '' }}">
+                {{-- <li class="menu-item {{ request()->is('master/kategoriPembayaran') ? 'active' : '' }}">
                     <a href="{{ url('master/kategoriPembayaran') }}" class="menu-link">
                         <div data-i18n="Kategori Pembayaran">Kategori Pembayaran</div>
                     </a>
-                </li>
+                </li> --}}
                 <li class="menu-item {{ request()->is('master/subPembayaran') ? 'active' : '' }}">
                     <a href="{{ url('master/subPembayaran') }}" class="menu-link">
-                        <div data-i18n="Sub Pembayaran">Sub Pembayaran</div>
+                        <div data-i18n="Sub Pembayaran">Pembayaran</div>
                     </a>
                 </li>
                 <li class="menu-item {{ request()->is('master/kategoriPendapatan') ? 'active' : '' }}">
