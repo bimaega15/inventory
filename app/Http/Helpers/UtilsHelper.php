@@ -312,14 +312,17 @@ class UtilsHelper
             $statusTransaksi = $getPenjualan->tipe_penjualan;
 
             $getPenjualanCicilan = $getPenjualan->penjualanCicilan;
-            $getPenjualanCicilan = $getPenjualanCicilan[0];
+            $countPenjualanCicilan = count($getPenjualanCicilan);
 
+            $getPenjualanCicilan = $getPenjualanCicilan[0];
             $getBayarCicilan = $getPenjualan->penjualanCicilan->pluck('bayar_pcicilan')->toArray();
             $totalBayar = array_sum($getBayarCicilan);
 
             $hutang = $getPenjualanCicilan->bayar_pcicilan + $getPenjualanCicilan->hutang_pcicilan;
-            if ($statusTransaksi == 'cash') {
+            if ($statusTransaksi == 'cash' && $countPenjualanCicilan > 1) {
                 $hutang = $getPenjualanCicilan->bayar_pcicilan + $getPenjualanCicilan->hutang_pcicilan - $getPenjualan->kembalian_pcicilan;
+            } else if ($statusTransaksi == 'cash' && $countPenjualanCicilan == 1) {
+                $hutang = $getPenjualanCicilan->bayar_pcicilan - $getPenjualanCicilan->kembalian_pcicilan;
             }
             $kembalian = $getPenjualan->kembalian_penjualan;
             $bayar = $totalBayar;
@@ -371,14 +374,18 @@ class UtilsHelper
                 $statusTransaksi = $getPembelian->tipe_pembelian;
 
                 $getPembelianCicilan = $getPembelian->pembelianCicilan;
+                $countPembelianCicilan = count($getPembelianCicilan);
+
                 $getPembelianCicilan = $getPembelianCicilan[0];
 
                 $getBayarCicilan = $getPembelian->pembelianCicilan->pluck('bayar_pbcicilan')->toArray();
                 $totalBayar = array_sum($getBayarCicilan);
 
                 $hutang = $getPembelianCicilan->bayar_pbcicilan + $getPembelianCicilan->hutang_pbcicilan;
-                if ($statusTransaksi == 'cash') {
+                if ($statusTransaksi == 'cash' && $countPembelianCicilan > 1) {
                     $hutang = $getPembelianCicilan->bayar_pcicilan + $getPembelianCicilan->hutang_pcicilan - $getPembelian->kembalian_pcicilan;
+                } else if ($statusTransaksi == 'cash' && $countPembelianCicilan == 1) {
+                    $hutang = $getPembelianCicilan->bayar_pcicilan - $getPembelianCicilan->kembalian_pcicilan;
                 }
                 $kembalian = $getPembelian->kembalian_pembelian;
                 $bayar = $totalBayar;
