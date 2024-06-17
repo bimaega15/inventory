@@ -5,22 +5,22 @@ var urlRoot = $('.url_root').data('value');
 var body = $("body");
 var datatable;
 
-
-$(document).ready(function () { 
+$(document).ready(function () {
     let dari_tanggal = $("input[name=dari_tanggal]").val();
-    if(dari_tanggal != '') {
+    if (dari_tanggal != '') {
         dari_tanggal = formatDateToDb(dari_tanggal);
     }
 
     let sampai_tanggal = $("input[name=sampai_tanggal]").val();
-    if(sampai_tanggal != '') {
+    if (sampai_tanggal != '') {
         sampai_tanggal = formatDateToDb(sampai_tanggal);
     }
 
     function initDatatable({
-            dari_tanggal = dari_tanggal,
-            sampai_tanggal = sampai_tanggal,
-        }) {
+        dari_tanggal = dari_tanggal,
+        sampai_tanggal = sampai_tanggal,
+        tipe_pembelian = $('select[name="tipe_pembelian"]').val(),
+    }) {
 
         datatable = basicDatatable({
             tableId: $("#dataTable"),
@@ -57,6 +57,7 @@ $(document).ready(function () {
             dataAjaxUrl: {
                 dari_tanggal,
                 sampai_tanggal,
+                tipe_pembelian,
             },
         });
     }
@@ -71,14 +72,16 @@ $(document).ready(function () {
         e.preventDefault();
 
         let dari_tanggal = $("input[name=dari_tanggal]").val();
-        if(dari_tanggal != '') {
+        if (dari_tanggal != '') {
             dari_tanggal = formatDateToDb(dari_tanggal);
         }
-    
+
         let sampai_tanggal = $("input[name=sampai_tanggal]").val();
-        if(sampai_tanggal != '') {
+        if (sampai_tanggal != '') {
             sampai_tanggal = formatDateToDb(sampai_tanggal);
         }
+        const tipe_pembelian = $('select[name="tipe_pembelian"]').val();
+
 
         $('#dataTable').DataTable().destroy();
         $("#dataTable").find("colgroup").remove();
@@ -86,6 +89,7 @@ $(document).ready(function () {
         initDatatable({
             dari_tanggal,
             sampai_tanggal,
+            tipe_pembelian,
         });
     });
 });

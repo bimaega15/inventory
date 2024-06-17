@@ -7,14 +7,21 @@ use App\Models\Pembelian;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use DataTables;
+use Illuminate\Support\Facades\Config;
 
 class PeriodePembelianController extends Controller
 {
+    private $datastatis;
+    public function __construct()
+    {
+        $this->datastatis = Config::get('datastatis');
+    }
     public function index(Request $request)
     {
         if ($request->ajax()) {
             $dari_tanggal = $request->input('dari_tanggal');
             $sampai_tanggal = $request->input('sampai_tanggal');
+            $tipe_pembelian = $request->input('tipe_pembelian');
 
             $getPembelian = new pembelian();
             $dataPembelian = $getPembelian->getReportpembelian();
@@ -23,6 +30,9 @@ class PeriodePembelianController extends Controller
             }
             if ($sampai_tanggal != null) {
                 $dataPembelian = $dataPembelian->whereDate('pembelian.updated_at', '<=', $sampai_tanggal);
+            }
+            if ($tipe_pembelian != null) {
+                $dataPembelian = $dataPembelian->where('pembelian.tipe_pembelian', '=', $tipe_pembelian);
             }
 
             return DataTables::eloquent($dataPembelian)
@@ -41,9 +51,17 @@ class PeriodePembelianController extends Controller
 
         $dari_tanggal = date('d/m/Y');
         $sampai_tanggal = date('d/m/Y');
+        $array_tipe_pembayaran = [];
+        foreach ($this->datastatis['tipe_pembayaran'] as $key => $item) {
+            $array_tipe_pembayaran[] = [
+                'label' => $item,
+                'id' => $key
+            ];
+        }
         $data = [
             'dari_tanggal' => $dari_tanggal,
             'sampai_tanggal' => $sampai_tanggal,
+            'array_tipe_pembayaran' => $array_tipe_pembayaran,
         ];
         return view('report::periodePembelian.index', $data);
     }
