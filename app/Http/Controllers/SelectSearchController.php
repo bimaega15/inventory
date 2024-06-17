@@ -29,10 +29,13 @@ class SelectSearchController extends Controller
         $dataUsers = $dataUsers->paginate(10, ['*'], 'page', $page);
 
         $output = [];
-        $output[] = [
-            'id' => '-',
-            'text' => 'Pilih Semua',
-        ];
+        if ($page == 1) {
+            $output[] = [
+                'id' => '-',
+                'text' => 'Pilih Semua',
+            ];
+        }
+
         foreach ($dataUsers as $key => $item) {
             $output[] = [
                 'id' => $item->id,
@@ -70,10 +73,13 @@ class SelectSearchController extends Controller
         $getCustomer = $getCustomer->paginate(10, ['*'], 'page', $page);
 
         $output = [];
-        $output[] = [
-            'id' => '-',
-            'text' => 'Pilih Semua',
-        ];
+        if ($page == 1) {
+            $output[] = [
+                'id' => '-',
+                'text' => 'Pilih Semua',
+            ];
+        }
+
         foreach ($getCustomer as $key => $item) {
             $output[] = [
                 'id' => $item->id,
@@ -123,11 +129,13 @@ class SelectSearchController extends Controller
             });
         }
         $getBarang = $getBarang->paginate(10, ['*'], 'page', $page);
+        if ($page == 1) {
+            $output[] = [
+                'id' => '-',
+                'text' => 'Pilih Semua',
+            ];
+        }
 
-        $output[] = [
-            'id' => '-',
-            'text' => 'Pilih Semua',
-        ];
         foreach ($getBarang as $key => $item) {
             $output[] = [
                 'id' => $item->id,
@@ -168,6 +176,12 @@ class SelectSearchController extends Controller
         $getKategoriPembayaran = $getKategoriPembayaran->paginate(10, ['*'], 'page', $page);
 
         $output = [];
+        if ($page == 1) {
+            $output[] = [
+                'id' => '-',
+                'text' => 'Pilih Semua',
+            ];
+        }
         foreach ($getKategoriPembayaran as $key => $item) {
             $output[] = [
                 'id' => $item->id,
@@ -202,10 +216,13 @@ class SelectSearchController extends Controller
         }
         $getSupplier = $getSupplier->paginate(10, ['*'], 'page', $page);
 
-        $output[] = [
-            'id' => '-',
-            'text' => 'Pilih Semua',
-        ];
+        $output = [];
+        if ($page == 1) {
+            $output[] = [
+                'id' => '-',
+                'text' => 'Pilih Semua',
+            ];
+        }
         foreach ($getSupplier as $key => $item) {
             $output[] = [
                 'id' => $item->id,
@@ -250,10 +267,13 @@ class SelectSearchController extends Controller
         $getUsers = $getUsers->where('status_users', true)
             ->paginate(10, ['*'], 'page', $page);
 
-        $output[] = [
-            'id' => '-',
-            'text' => 'Pilih Semua',
-        ];
+        $output = [];
+        if ($page == 1) {
+            $output[] = [
+                'id' => '-',
+                'text' => 'Pilih Semua',
+            ];
+        }
         foreach ($getUsers as $key => $item) {
             $output[] = [
                 'id' => $item->id,
