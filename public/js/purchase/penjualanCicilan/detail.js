@@ -83,6 +83,8 @@ $(document).ready(function () {
             data: {},
             text: "Apakah anda yakin ingin menghapus item ini?",
             dataFunction: refreshDataSet,
+            isRenderView: true,
+            isDataTable: true,
         });
     });
 

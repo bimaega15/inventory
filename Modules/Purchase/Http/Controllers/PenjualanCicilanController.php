@@ -199,6 +199,7 @@ class PenjualanCicilanController extends Controller
                 $penjualan->bayar_penjualan = $getBayar;
                 $penjualan->hutang_penjualan = $getHutang < 0 ? 0 : $getHutang;
                 $penjualan->kembalian_penjualan = $getKembalian;
+                $penjualan->tipe_penjualan = $getHutang > 0 ? 'hutang' : 'cash';
                 $penjualan->save();
 
                 PenjualanCicilan::destroy($id);
@@ -295,6 +296,8 @@ class PenjualanCicilanController extends Controller
         $getHutang = floatval($totalPenjualan) - floatval($getBayar);
         $getKembalian = floatval($penjualan->kembalian_penjualan) - floatval($dataKembalian);
 
+        // status penjualan
+        $penjualan->tipe_penjualan = $getHutang > 0 ? 'hutang' : 'cash';
         $penjualan->bayar_penjualan = $getBayar;
         $penjualan->hutang_penjualan = $getHutang < 0 ? 0 : $getHutang;
         $penjualan->kembalian_penjualan = $getKembalian;

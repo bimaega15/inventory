@@ -331,7 +331,7 @@
                 <div data-i18n="Profile">Profile</div>
             </a>
         </li>
-        <li class="menu-item">
+        {{-- <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-lock"></i>
                 <div data-i18n="Pengaturan">Pengaturan</div>
@@ -343,7 +343,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
         <li class="menu-item {{ request()->is('setting/logout') ? 'active' : '' }}">
             <a href="{{ url('setting/logout') }}" class="menu-link">

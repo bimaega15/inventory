@@ -11,8 +11,8 @@
                 value="{{ isset($row) ? UtilsHelp::formatDateLaporan($row->tanggal_tpendapatan) ?? '' : date('d/m/Y') }}" />
         </div>
         <div class="modal-footer">
-            <div class="row justify-content-end">
-                <div class="col-sm-12">
+            <div class="d-flex justify-content-end">
+                <div>
                     <x-button-cancel-modal />
                     <x-button-submit-modal />
                 </div>

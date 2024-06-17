@@ -39,7 +39,7 @@ return [
     'tipe_pembayaran' => [
         'cash' => 'Cash',
         'transfer' => 'Transfer',
-        'deposit' => 'Deposit',
+        // 'deposit' => 'Deposit',
     ],
     'pesanwa_hutang' => 'Transaksi anda sudah melebihi batas waktu pembayaran. Silahkan segera melakukan pembayaran.',
     'pesanwa_hutangsupplier' => 'Transaksi saya yang sebelumnya belum lunas, akan segera kami lunasi sebelum jatuh tempo.',

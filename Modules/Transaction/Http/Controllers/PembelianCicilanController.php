@@ -197,6 +197,7 @@ class PembelianCicilanController extends Controller
                 $pembelian->bayar_pembelian = $getBayar;
                 $pembelian->hutang_pembelian = $getHutang < 0 ? 0 : $getHutang;
                 $pembelian->kembalian_pembelian = $getKembalian;
+                $pembelian->tipe_pembelian = $getHutang > 0 ? 'hutang' : 'cash';
                 $pembelian->save();
 
                 PembelianCicilan::destroy($id);
@@ -296,6 +297,7 @@ class PembelianCicilanController extends Controller
         $pembelian->bayar_pembelian = $getBayar;
         $pembelian->hutang_pembelian = $getHutang < 0 ? 0 : $getHutang;
         $pembelian->kembalian_pembelian = $getKembalian;
+        $pembelian->tipe_pembelian = $getHutang > 0 ? 'hutang' : 'cash';
         $pembelian->save();
 
         PembelianCicilan::destroy($id);

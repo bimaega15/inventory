@@ -1,4 +1,4 @@
-<div class="card" style="min-height: 400px; overflow-y: scroll;">
+<div class="card" style="height: 500px; overflow-y: scroll;">
     @include('purchase::penjualanCicilan.partials.headerCicilan', [
         'penjualan' => $penjualan,
     ])

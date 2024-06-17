@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+    @php
+        $settingApp = UtilsHelp::settingApp();
+    @endphp
     <div class="container-xxl">
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner">
@@ -15,13 +18,14 @@
                         <div class="app-brand justify-content-center">
                             <a href="index.html" class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo">
-                                    <img src="{{ asset('backend/logojm.jpg') }}" alt="" style="width: 110px;">
+                                    <img src="{{ asset('upload/setting/' . $settingApp->logoaplikasi_pengaturan) }}"
+                                        alt="Logo Aplikasi" style="width: 110px;">
                                 </span>
 
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Welcome to Workshop App</h4>
+                        <h4 class="mb-2">Welcome to {{ $settingApp->namaaplikasi_pengaturan }}</h4>
                         <p class="mb-4">Silahkan Login, masukan email dan password anda</p>
 
                         <form id="formAuthentication" class="mb-3" action="{{ url('auth/login') }}" method="post">

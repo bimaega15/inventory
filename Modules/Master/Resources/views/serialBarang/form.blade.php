@@ -20,8 +20,8 @@
             @endif
         </div>
         <div class="modal-footer">
-            <div class="row justify-content-end">
-                <div class="col-sm-12">
+            <div class="d-flex justify-content-end">
+                <div>
                     <x-button-cancel-modal />
                     <x-button-submit-modal disabled="{{ $formCount == 0 ? 'disabled' : '' }}" />
                 </div>

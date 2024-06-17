@@ -94,6 +94,7 @@ function basicDeleteConfirmDatatable({
     text = "",
     dataFunction = () => { },
     isRenderView = false,
+    isDataTable = false,
 }) {
     var text = text ? text : "Benar ingin menghapus data ini?";
 
@@ -123,6 +124,9 @@ function basicDeleteConfirmDatatable({
                         datatable.ajax.reload();
                     } else {
                         dataFunction();
+                        if (isDataTable) {
+                            datatable.ajax.reload();
+                        }
                     }
                 },
             });
