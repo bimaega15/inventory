@@ -7,10 +7,17 @@ use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use DataTables;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
 class PembelianProdukController extends Controller
 {
+    private $datastatis;
+    public function __construct()
+    {
+       $this->datastatis = Config::get('datastatis'); 
+    }
+
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -75,10 +82,18 @@ class PembelianProdukController extends Controller
 
         $dari_tanggal = date('d/m/Y');
         $sampai_tanggal = date('d/m/Y');
+        $array_tipe_pembayaran = [];
+        foreach ($this->datastatis['tipe_pembayaran'] as $value => $item) {
+            $array_tipe_pembayaran[] = [
+                'id' => $value,
+                'label' => $item
+            ];
+        }
         $data = [
             'dari_tanggal' => $dari_tanggal,
             'sampai_tanggal' => $sampai_tanggal,
-        ];
+            'array_tipe_pembayaran' => $array_tipe_pembayaran,
+         ];
         return view('report::pembelianProduk.index', $data);
     }
 }

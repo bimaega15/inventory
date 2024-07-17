@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller;
 use App\Models\Menu;
 use Modules\Setting\Http\Requests\CreatePostMenuRequest;
 
-class MenuController extends Controller
+class PermissionsController extends Controller
 {
     public function index(Request $request)
     {

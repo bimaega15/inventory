@@ -24,6 +24,12 @@ class UtilsHelper
         $getUser = User::with('profile')->find($users_id);
         return $getUser;
     }
+    public static function myRoles($users_id = null)
+    {
+        $myProfile = UtilsHelper::myProfile($users_id);
+        $myProfile = $myProfile->roles[0]->name;
+        return strtolower($myProfile);
+    }
 
     public static function settingApp()
     {
@@ -554,7 +560,7 @@ class UtilsHelper
 
             $menu_item = UtilsHelper::menuFilterById($item['id']);
             $buttonUpdate = '
-                <a href="' . route('menu.edit', $menu_item->id) . '" class="btn btn-warning btn-edit btn-sm" style="padding: 5px 5px;">
+                <a href="' . route('menu.edit', $menu_item->id) . '" class="btn btn-warning btn-edit btn-sm" style="padding: 5px 5px;" data-typemodal="largeModal">
                     <i class="fa-solid fa-pencil"></i>
                 </a>
                 ';

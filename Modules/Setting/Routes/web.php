@@ -19,8 +19,15 @@ Route::prefix('setting')->middleware('auth')->group(function () {
     Route::resource('user', 'UserController');
     Route::resource('backup', 'BackupController');
     Route::resource('restore', 'RestoreController');
+
+    // menu
     Route::resource('menu', 'MenuController')->except(['show']);
     Route::get('/renderTree', 'MenuController@renderTree')->name('menu.renderTree');
     Route::get('/dataTable', 'MenuController@dataTable')->name('menu.dataTable');
     Route::get('/sortAndNested', 'MenuController@sortAndNested')->name('menu.sortAndNested');
+
+    // permission
+    Route::resource('permissions', 'PermissionsController')->except(['show']);
+
+
 });

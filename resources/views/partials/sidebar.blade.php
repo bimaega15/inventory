@@ -1,5 +1,6 @@
 @php
     $settingApp = UtilsHelp::settingApp();
+    $myRoles = UtilsHelp::myRoles();
 @endphp
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
@@ -19,32 +20,29 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <li class="menu-item {{ request()->is('dashboard') ? 'active' : '' }}">
-            <a href="{{ url('dashboard') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Basic">Dashboard</div>
-            </a>
-        </li>
+        @php
+            $allowedDashboard = ['admin', 'pelanggan', 'kasir', 'karyawan gudang'];
+        @endphp
+        @if (in_array($myRoles, $allowedDashboard))
+            <li class="menu-item {{ request()->is('dashboard') ? 'active' : '' }}">
+                <a href="{{ url('dashboard') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Basic">Dashboard</div>
+                </a>
+            </li>
+        @endif
+        @php
+        $allowedMyProfile = ['admin', 'pelanggan', 'kasir', 'karyawan gudang'];
+        @endphp
+        @if (in_array($myRoles, $allowedMyProfile))
         <li class="menu-item {{ request()->is('myProfile') ? 'active' : '' }}">
             <a href="{{ url('myProfile') }}" class="menu-link">
                 <i class='menu-icon tf-icons bx bxs-user-circle'></i>
                 <div data-i18n="Basic">My Profile</div>
             </a>
         </li>
-
-        @php
-            $activeRoutesMaster = [
-                'master/kategori',
-                'master/satuan',
-                'master/barang',
-                'master/serialBarang',
-                'master/generateBarcode',
-                'master/customer',
-                'master/supplier',
-                'master/kategoriPembayaran',
-                'master/subPembayaran',
-            ];
-        @endphp
+        @endif
+        
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Transaksi Toko</span>
         </li>
@@ -52,11 +50,17 @@
         @php
             $activeRoutePurchase = ['purchase/kasir', 'purchase/penjualan', 'purchase/belumLunas', 'purchase/lunas'];
         @endphp
+
+        @php
+        $allowedPenjualan = ['admin', 'kasir', 'pelanggan'];
+        @endphp
+
+        @if (in_array($myRoles, $allowedPenjualan))
         <li
             class="menu-item {{ collect($activeRoutePurchase)->contains(function ($route) {
                 return request()->is($route) || str_starts_with(request()->url(), url($route));
             })
-                ? 'active'
+                ? 'active open'
                 : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-money"></i>
@@ -85,6 +89,7 @@
                 </li>
             </ul>
         </li>
+        @endif
 
         @php
             $activeRouteTransaction = [
@@ -94,11 +99,16 @@
                 'transaction/lunas',
             ];
         @endphp
+        @php
+        $allowedPembelian = ['admin', 'kasir', 'pelanggan'];
+        @endphp
+
+        @if (in_array($myRoles, $allowedPembelian))
         <li
             class="menu-item {{ collect($activeRouteTransaction)->contains(function ($route) {
                 return request()->is($route) || str_starts_with(request()->url(), url($route));
             })
-                ? 'active'
+                ? 'active open'
                 : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cart-alt"></i>
@@ -127,6 +137,7 @@
                 </li>
             </ul>
         </li>
+        @endif
 
         @php
             $activeRoutesMaster = [
@@ -143,6 +154,11 @@
                 'master/kategoriPengeluaran',
             ];
         @endphp
+        @php
+        $allowedMaster = ['admin', 'karyawan gudang', 'kasir'];
+        @endphp
+
+        @if (in_array($myRoles, $allowedMaster))
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Data Master</span>
         </li>
@@ -150,65 +166,86 @@
             class="menu-item {{ collect($activeRoutesMaster)->contains(function ($route) {
                 return request()->is($route) || str_starts_with(request()->url(), url($route));
             })
-                ? 'active'
+                ? 'active open'
                 : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Data Master">Data Master</div>
             </a>
             <ul class="menu-sub">
+                @if (in_array($myRoles, ['admin']))
                 <li class="menu-item {{ request()->is('master/kategori') ? 'active' : '' }}">
                     <a href="{{ url('master/kategori') }}" class="menu-link">
                         <div data-i18n="Kategori">Kategori</div>
                     </a>
                 </li>
+                @endif
+                @if (in_array($myRoles, ['admin']))
                 <li class="menu-item {{ request()->is('master/satuan') ? 'active' : '' }}">
                     <a href="{{ url('master/satuan') }}" class="menu-link">
                         <div data-i18n="Satuan">Satuan</div>
                     </a>
                 </li>
+                @endif
                 <li class="menu-item {{ request()->is('master/barang') ? 'active' : '' }}">
                     <a href="{{ url('master/barang') }}" class="menu-link">
                         <div data-i18n="Barang">Barang</div>
                     </a>
                 </li>
+                @if (in_array($myRoles, ['admin']))
                 <li class="menu-item {{ request()->is('master/customer') ? 'active' : '' }}">
                     <a href="{{ url('master/customer') }}" class="menu-link">
                         <div data-i18n="Customer">Customer</div>
                     </a>
                 </li>
+                @endif
+                @if (in_array($myRoles, ['admin', 'kasir']))
                 <li class="menu-item {{ request()->is('master/supplier') ? 'active' : '' }}">
                     <a href="{{ url('master/supplier') }}" class="menu-link">
                         <div data-i18n="Supplier">Supplier</div>
                     </a>
                 </li>
+                @endif
 
                 {{-- <li class="menu-item {{ request()->is('master/kategoriPembayaran') ? 'active' : '' }}">
                     <a href="{{ url('master/kategoriPembayaran') }}" class="menu-link">
                         <div data-i18n="Kategori Pembayaran">Kategori Pembayaran</div>
                     </a>
                 </li> --}}
+                @if (in_array($myRoles, ['admin']))
                 <li class="menu-item {{ request()->is('master/subPembayaran') ? 'active' : '' }}">
                     <a href="{{ url('master/subPembayaran') }}" class="menu-link">
                         <div data-i18n="Sub Pembayaran">Pembayaran</div>
                     </a>
                 </li>
+                @endif
+                @if (in_array($myRoles, ['admin']))
                 <li class="menu-item {{ request()->is('master/kategoriPendapatan') ? 'active' : '' }}">
                     <a href="{{ url('master/kategoriPendapatan') }}" class="menu-link">
                         <div data-i18n="Kategori Pendapatan">Kategori Pendapatan</div>
                     </a>
                 </li>
+                @endif
+                @if (in_array($myRoles, ['admin']))
                 <li class="menu-item {{ request()->is('master/kategoriPengeluaran') ? 'active' : '' }}">
                     <a href="{{ url('master/kategoriPengeluaran') }}" class="menu-link">
                         <div data-i18n="Kategori Pengeluaran">Kategori Pengeluaran</div>
                     </a>
                 </li>
+                @endif
             </ul>
         </li>
+        @endif
+
 
         @php
             $activeRoutesLaporan = ['report/pendapatan', 'report/pengeluaran', 'report/labaBersih'];
         @endphp
+        @php
+        $allowedLaporan = ['admin'];
+        @endphp
+        
+        @if (in_array($myRoles, $allowedLaporan))
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Laporan</span>
         </li>
@@ -216,7 +253,7 @@
             class="menu-item {{ collect($activeRoutesLaporan)->contains(function ($route) {
                 return request()->is($route) || str_starts_with(request()->url(), url($route));
             })
-                ? 'active'
+                ? 'active open'
                 : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-report"></i>
@@ -240,6 +277,8 @@
                 </li>
             </ul>
         </li>
+        @endif
+
         @php
             $activeRoutesLaporanToko = [
                 'report/kasir',
@@ -253,11 +292,16 @@
                 'report/stokTerkecil',
             ];
         @endphp
+ 
+        @php
+        $allowedLaporanToko = ['admin'];
+        @endphp
+        @if (in_array($myRoles, $allowedLaporanToko))
         <li
             class="menu-item {{ collect($activeRoutesLaporanToko)->contains(function ($route) {
                 return request()->is($route) || str_starts_with(request()->url(), url($route));
             })
-                ? 'active'
+                ? 'active open'
                 : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-report"></i>
@@ -311,39 +355,70 @@
                 </li>
             </ul>
         </li>
+        @endif
 
+
+        @php
+        $activeRoutesPengaturan = [
+            'setting/menu',
+            'setting/permissions',
+            'setting/user',
+            'setting/roles',
+            'setting/pengaturan',
+        ];
+    @endphp
+    @php
+    $allowedPengaturan = ['admin', 'kasir'];
+    @endphp
+    @if (in_array($myRoles, $allowedPengaturan))
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Konfigurasi</span></li>
-        <li class="menu-item {{ request()->is('setting/user') ? 'active' : '' }}">
-            <a href="{{ url('setting/user') }}" class="menu-link">
-                <i class='menu-icon tf-icons bx bxs-user-circle'></i>
-                <div data-i18n="User">User</div>
-            </a>
-        </li>
-        <li class="menu-item {{ request()->is('setting/roles') ? 'active' : '' }}">
-            <a href="{{ url('setting/roles') }}" class="menu-link">
-                <i class='menu-icon tf-icons bx bxs-user-account'></i>
-                <div data-i18n="Role">Role</div>
-            </a>
-        </li>
-        <li class="menu-item {{ request()->is('setting/pengaturan') ? 'active' : '' }}">
-            <a href="{{ url('setting/pengaturan') }}" class="menu-link">
-                <i class='menu-icon tf-icons bx bxs-detail'></i>
-                <div data-i18n="Profile">Profile</div>
-            </a>
-        </li>
-        {{-- <li class="menu-item">
+        <li class="menu-item {{ collect($activeRoutesPengaturan)->contains(function ($route) {
+                return request()->is($route) || str_starts_with(request()->url(), url($route));
+            })
+                ? 'active open'
+                : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-lock"></i>
                 <div data-i18n="Pengaturan">Pengaturan</div>
             </a>
             <ul class="menu-sub">
+                @if (in_array($myRoles, ['admin']))
                 <li class="menu-item {{ request()->is('setting/menu') ? 'active' : '' }}">
                     <a href="{{ url('setting/menu') }}" class="menu-link">
                         <div data-i18n="Menu">Menu</div>
                     </a>
                 </li>
+                @endif
+                {{-- @if (in_array($myRoles, ['admin']))
+                <li class="menu-item {{ request()->is('setting/permissions') ? 'active' : '' }}">
+                    <a href="{{ url('setting/permissions') }}" class="menu-link">
+                        <div data-i18n="Permission">Permission</div>
+                    </a>
+                </li>
+                @endif --}}
+                <li class="menu-item {{ request()->is('setting/user') ? 'active' : '' }}">
+                    <a href="{{ url('setting/user') }}" class="menu-link">
+                        <div data-i18n="User">User</div>
+                    </a>
+                </li>
+                @if (in_array($myRoles, ['admin']))
+                <li class="menu-item {{ request()->is('setting/roles') ? 'active' : '' }}">
+                    <a href="{{ url('setting/roles') }}" class="menu-link">
+                        <div data-i18n="Role">Role</div>
+                    </a>
+                </li>
+                @endif
+                @if (in_array($myRoles, ['admin']))
+                <li class="menu-item {{ request()->is('setting/pengaturan') ? 'active' : '' }}">
+                    <a href="{{ url('setting/pengaturan') }}" class="menu-link">
+                        <div data-i18n="Profile">Profile</div>
+                    </a>
+                </li>
+                @endif
+    
             </ul>
-        </li> --}}
+        </li>
+    @endif
 
         <li class="menu-item {{ request()->is('setting/logout') ? 'active' : '' }}">
             <a href="{{ url('setting/logout') }}" class="menu-link">

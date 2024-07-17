@@ -39,9 +39,9 @@ $(document).ready(function () {
         showModal({
             url: $(this).attr("href"),
             data: { id: $(this).data("id") },
-            title: "Ubah Data",
+            title: "Form Menu",
             type: "get",
-            modalId: "#largeModal",
+            modalId: $(this).data("typemodal"),
         });
     });
 
