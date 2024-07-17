@@ -16,7 +16,7 @@ class RunSqlSeeder extends Seeder
     public function run()
     {
         //
-        $sql = file_get_contents(public_path('data/app_mechanic.sql'));
+        $sql = file_get_contents(public_path('database/inventory_app.sql'));
         DB::unprepared($sql);
     }
 }
