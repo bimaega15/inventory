@@ -11,7 +11,7 @@
  Target Server Version : 100428 (10.4.28-MariaDB)
  File Encoding         : 65001
 
- Date: 14/07/2024 15:46:39
+ Date: 17/07/2024 21:18:42
 */
 
 SET NAMES utf8mb4;
@@ -216,17 +216,17 @@ CREATE TABLE `menu`  (
 -- ----------------------------
 INSERT INTO `menu` VALUES (3, NULL, 1, 'Dashboard', '<i class=\"menu-icon tf-icons bx bx-home-circle\"></i>', '/dashboard', 0, 1, NULL, '2024-07-14 14:07:46', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (4, NULL, 2, 'My Profile', '<i class=\"menu-icon tf-icons bx bxs-user-circle\"></i>', '/myProfile', 0, 1, NULL, '2024-07-14 14:13:12', '2024-07-14 15:42:41');
-INSERT INTO `menu` VALUES (5, NULL, 3, 'Penjualan', '<i class=\"menu-icon tf-icons bx bx-money\"></i>', '#', 1, 0, '[6,7,8,9]', '2024-07-14 14:13:54', '2024-07-14 15:43:56');
+INSERT INTO `menu` VALUES (5, NULL, 3, 'Penjualan', '<i class=\"menu-icon tf-icons bx bx-money\"></i>', '#', 1, 0, '[6,7,8,9]', '2024-07-14 14:13:54', '2024-07-14 16:29:54');
 INSERT INTO `menu` VALUES (6, NULL, 4, 'Kasir', NULL, '/purchase/kasir', 0, 1, NULL, '2024-07-14 14:30:23', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (7, NULL, 5, 'Invoice Penjualan', NULL, '/purchase/penjualan', 0, 1, NULL, '2024-07-14 14:31:39', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (8, NULL, 6, 'Invoice Hutang', NULL, '/purchase/belumLunas', 0, 1, NULL, '2024-07-14 14:32:25', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (9, NULL, 7, 'Invoice Lunas', NULL, '/purchase/lunas', 0, 1, NULL, '2024-07-14 14:33:17', '2024-07-14 15:42:41');
-INSERT INTO `menu` VALUES (10, NULL, 8, 'Pembelian', '<i class=\"menu-icon tf-icons bx bx-cart-alt\"></i>', '#', 1, 0, '[11,12,13,14]', '2024-07-14 14:34:52', '2024-07-14 15:43:56');
+INSERT INTO `menu` VALUES (10, NULL, 8, 'Pembelian', '<i class=\"menu-icon tf-icons bx bx-cart-alt\"></i>', '#', 1, 0, '[11,12,13,14]', '2024-07-14 14:34:52', '2024-07-14 16:29:54');
 INSERT INTO `menu` VALUES (11, NULL, 9, 'Transaksi Pembelian', NULL, '/transaction/kasir', 0, 1, NULL, '2024-07-14 14:36:02', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (12, NULL, 10, 'Invoice Pembelian', NULL, '/transaction/pembelian', 0, 1, NULL, '2024-07-14 14:37:34', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (13, NULL, 11, 'Invoice Hutang', NULL, '/transaction/belumLunas', 0, 1, NULL, '2024-07-14 14:38:08', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (14, NULL, 12, 'Invoice Lunas', NULL, '/transaction/lunas', 0, 1, NULL, '2024-07-14 14:38:37', '2024-07-14 15:42:41');
-INSERT INTO `menu` VALUES (15, NULL, 13, 'Data Master', '<i class=\"menu-icon tf-icons bx bx-dock-top\"></i>', '#', 1, 0, '[16,17,18,19,20,21,22,23]', '2024-07-14 14:39:19', '2024-07-14 15:43:56');
+INSERT INTO `menu` VALUES (15, NULL, 13, 'Data Master', '<i class=\"menu-icon tf-icons bx bx-dock-top\"></i>', '#', 1, 0, '[16,17,18,19,20,21,22,23]', '2024-07-14 14:39:19', '2024-07-14 16:29:54');
 INSERT INTO `menu` VALUES (16, NULL, 14, 'Kategori', NULL, '/master/kategori', 0, 1, NULL, '2024-07-14 14:39:56', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (17, NULL, 15, 'Satuan', NULL, '/master/satuan', 0, 1, NULL, '2024-07-14 14:40:20', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (18, NULL, 16, 'Barang', NULL, '/master/barang', 0, 1, NULL, '2024-07-14 14:40:50', '2024-07-14 15:42:41');
@@ -235,11 +235,11 @@ INSERT INTO `menu` VALUES (20, NULL, 18, 'Supplier', NULL, '/master/supplier', 0
 INSERT INTO `menu` VALUES (21, NULL, 19, 'Pembayaran', NULL, '/master/subPembayaran', 0, 1, NULL, '2024-07-14 14:42:04', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (22, NULL, 20, 'Kategori Pendapatan', NULL, '/master/kategoriPendapatan', 0, 1, NULL, '2024-07-14 14:42:44', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (23, NULL, 21, 'Kategori Pengeluaran', NULL, '/master/kategoriPengeluaran', 0, 1, NULL, '2024-07-14 14:43:17', '2024-07-14 15:42:41');
-INSERT INTO `menu` VALUES (24, NULL, 22, 'Laba Bersih', '<i class=\"menu-icon tf-icons bx bxs-report\"></i>', '#', 1, 0, '[25,26,27]', '2024-07-14 14:44:49', '2024-07-14 15:43:56');
-INSERT INTO `menu` VALUES (25, NULL, 23, 'Pendapatan', NULL, '/report/pendapatan', 0, 1, NULL, '2024-07-14 14:45:22', '2024-07-14 15:42:41');
+INSERT INTO `menu` VALUES (24, NULL, 22, 'Laba Bersih', '<i class=\"menu-icon tf-icons bx bxs-report\"></i>', '#', 1, 0, '[25,26,27]', '2024-07-14 14:44:49', '2024-07-14 16:29:54');
+INSERT INTO `menu` VALUES (25, NULL, 23, 'Pendapatan', NULL, '/report/pendapatan', 0, 1, NULL, '2024-07-14 14:45:22', '2024-07-14 15:51:46');
 INSERT INTO `menu` VALUES (26, NULL, 24, 'Pengeluaran', NULL, '/report/pengeluaran', 0, 1, NULL, '2024-07-14 14:46:35', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (27, NULL, 25, 'Laba Bersih', NULL, '/report/labaBersih', 0, 1, NULL, '2024-07-14 14:47:04', '2024-07-14 15:42:41');
-INSERT INTO `menu` VALUES (28, NULL, 26, 'Laporan Toko', '<i class=\"menu-icon tf-icons bx bxs-report\"></i>', '#', 1, 0, '[29,30,31,36,37,38,39,40,41]', '2024-07-14 14:47:56', '2024-07-14 15:43:56');
+INSERT INTO `menu` VALUES (28, NULL, 26, 'Laporan Toko', '<i class=\"menu-icon tf-icons bx bxs-report\"></i>', '#', 1, 0, '[29,30,31,36,37,38,39,40,41]', '2024-07-14 14:47:56', '2024-07-14 16:29:54');
 INSERT INTO `menu` VALUES (29, NULL, 27, 'Kasir', NULL, '/report/kasir', 0, 1, NULL, '2024-07-14 14:49:21', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (30, NULL, 28, 'Customer', NULL, '/report/customer', 0, 1, NULL, '2024-07-14 14:49:47', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (31, NULL, 29, 'Periode', NULL, '/report/periode', 0, 1, NULL, '2024-07-14 14:50:16', '2024-07-14 15:42:41');
@@ -249,12 +249,12 @@ INSERT INTO `menu` VALUES (38, 28, 32, 'Pembelian Produk', NULL, '/report/pembel
 INSERT INTO `menu` VALUES (39, 28, 33, 'Periode Pembelian', NULL, '/report/periodePembelian', 0, 1, NULL, '2024-07-14 15:33:22', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (40, 28, 34, 'Barang Terlaris', NULL, '/report/barangTerlaris', 0, 1, NULL, '2024-07-14 15:33:58', '2024-07-14 15:42:41');
 INSERT INTO `menu` VALUES (41, 28, 35, 'Stok Terkecil', NULL, '/report/stokTerkecil', 0, 1, NULL, '2024-07-14 15:34:46', '2024-07-14 15:42:41');
-INSERT INTO `menu` VALUES (42, NULL, 36, 'User', '<i class=\"menu-icon tf-icons bx bxs-user-circle\"></i>', '/setting/user', 0, 1, NULL, '2024-07-14 15:35:51', '2024-07-14 15:42:41');
-INSERT INTO `menu` VALUES (43, NULL, 37, 'Role', '<i class=\"menu-icon tf-icons bx bxs-user-account\"></i>', '/setting/roles', 0, 1, NULL, '2024-07-14 15:36:49', '2024-07-14 15:42:41');
-INSERT INTO `menu` VALUES (44, NULL, 38, 'Profile', '<i class=\"menu-icon tf-icons bx bxs-detail\"></i>', '/setting/pengaturan', 0, 1, NULL, '2024-07-14 15:37:20', '2024-07-14 15:42:41');
-INSERT INTO `menu` VALUES (45, NULL, 39, 'Pengaturan', '<i class=\"menu-icon tf-icons bx bxs-lock\"></i>', '#', 1, 0, '[46]', '2024-07-14 15:41:25', '2024-07-14 15:43:56');
+INSERT INTO `menu` VALUES (42, NULL, 37, 'User', NULL, '/setting/user', 0, 1, NULL, '2024-07-14 15:35:51', '2024-07-14 15:51:17');
+INSERT INTO `menu` VALUES (43, NULL, 38, 'Role', NULL, '/setting/roles', 0, 1, NULL, '2024-07-14 15:36:49', '2024-07-14 15:51:17');
+INSERT INTO `menu` VALUES (44, NULL, 39, 'Profile', NULL, '/setting/pengaturan', 0, 1, NULL, '2024-07-14 15:37:20', '2024-07-14 15:51:17');
+INSERT INTO `menu` VALUES (45, NULL, 36, 'Pengaturan', '<i class=\"menu-icon tf-icons bx bxs-lock\"></i>', '#', 1, 0, '[42,43,44,46]', '2024-07-14 15:41:25', '2024-07-14 16:29:54');
 INSERT INTO `menu` VALUES (46, 45, 40, 'Menu', NULL, '/setting/menu', 0, 1, NULL, '2024-07-14 15:42:14', '2024-07-14 15:42:41');
-INSERT INTO `menu` VALUES (47, NULL, 41, 'Logout', '<i class=\"menu-icon tf-icons bx bx-log-out\"></i>', '/logout', 0, 0, '[]', '2024-07-14 15:43:41', '2024-07-14 15:44:15');
+INSERT INTO `menu` VALUES (47, NULL, 41, 'Logout', '<i class=\"menu-icon tf-icons bx bx-log-out\"></i>', '/logout', 0, 1, NULL, '2024-07-14 15:43:41', '2024-07-14 15:49:49');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -363,10 +363,9 @@ CREATE TABLE `model_has_roles`  (
 -- Records of model_has_roles
 -- ----------------------------
 INSERT INTO `model_has_roles` VALUES (1, 'App\\Models\\User', 1);
-INSERT INTO `model_has_roles` VALUES (4, 'App\\Models\\User', 2);
-INSERT INTO `model_has_roles` VALUES (4, 'App\\Models\\User', 5);
+INSERT INTO `model_has_roles` VALUES (2, 'App\\Models\\User', 2);
+INSERT INTO `model_has_roles` VALUES (3, 'App\\Models\\User', 5);
 INSERT INTO `model_has_roles` VALUES (4, 'App\\Models\\User', 6);
-INSERT INTO `model_has_roles` VALUES (4, 'App\\Models\\User', 7);
 
 -- ----------------------------
 -- Table structure for order_barang
@@ -774,10 +773,9 @@ CREATE TABLE `profile`  (
 -- Records of profile
 -- ----------------------------
 INSERT INTO `profile` VALUES (1, 'Admin', '082277506232', 'Jakarta pusat - edit', 'L', 1, '2024-06-15 14:49:58', '2024-06-17 17:25:34');
-INSERT INTO `profile` VALUES (2, 'Staf1', '03892387', 'alamat staf 1', 'L', 2, '2024-06-17 11:32:56', '2024-06-17 11:32:56');
-INSERT INTO `profile` VALUES (5, 'Staf2', '02389237', 'alamat staf 2', 'L', 5, '2024-06-17 15:35:47', '2024-06-17 15:35:47');
+INSERT INTO `profile` VALUES (2, 'Staf1', '03892387', 'alamat staf 1', 'L', 2, '2024-06-17 11:32:56', '2024-07-17 20:50:51');
+INSERT INTO `profile` VALUES (5, 'Staf2', '02389237', 'alamat staf 2', 'L', 5, '2024-06-17 15:35:47', '2024-07-17 20:50:59');
 INSERT INTO `profile` VALUES (6, 'Staf 3', '09328237', '-', 'L', 6, '2024-06-17 16:24:52', '2024-06-17 16:24:52');
-INSERT INTO `profile` VALUES (7, 'Staf4', '02389723987', '-', 'L', 7, '2024-06-17 17:29:53', '2024-06-17 17:29:53');
 
 -- ----------------------------
 -- Table structure for role_has_permissions
@@ -814,12 +812,9 @@ CREATE TABLE `roles`  (
 -- Records of roles
 -- ----------------------------
 INSERT INTO `roles` VALUES (1, 'Admin', 'web', '2024-06-15 14:49:57', '2024-06-15 14:49:57');
-INSERT INTO `roles` VALUES (2, 'Inventory', 'web', '2024-06-15 19:04:22', '2024-06-15 19:04:22');
-INSERT INTO `roles` VALUES (3, 'Akuntansi', 'web', '2024-06-15 19:04:31', '2024-06-15 19:04:31');
-INSERT INTO `roles` VALUES (4, 'Staff', 'web', '2024-06-15 19:04:38', '2024-06-15 19:04:38');
-INSERT INTO `roles` VALUES (7, 'Direktur', 'web', '2024-06-17 15:36:03', '2024-06-17 15:36:03');
-INSERT INTO `roles` VALUES (8, 'Finance', 'web', '2024-06-17 16:25:10', '2024-06-17 16:25:10');
-INSERT INTO `roles` VALUES (9, 'Programmer', 'web', '2024-06-17 17:30:15', '2024-06-17 17:30:15');
+INSERT INTO `roles` VALUES (2, 'Pelanggan', 'web', '2024-06-15 19:04:22', '2024-07-17 20:49:57');
+INSERT INTO `roles` VALUES (3, 'Kasir', 'web', '2024-06-15 19:04:31', '2024-07-17 20:50:07');
+INSERT INTO `roles` VALUES (4, 'Karyawan Gudang', 'web', '2024-06-15 19:04:38', '2024-07-17 20:50:25');
 
 -- ----------------------------
 -- Table structure for saldo_customer
@@ -1082,9 +1077,8 @@ CREATE TABLE `users`  (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'Admin', 'admin@gmail.com', 'admin', NULL, '$2y$10$yvQVhyJKTJ67cEuZ0Lk28ORfHgtejSEOF2tqjsX9yxhUxZFPlwTem', NULL, '2024-06-15 14:49:58', '2024-06-17 14:46:00', 1, 1);
-INSERT INTO `users` VALUES (2, 'Staf1', 'staf1@gmail.com', 'staf1', NULL, '$2y$10$MDC9EHIBnMNO8aBW4cvftOQS8/9EP74TQvdO3RJt.PXmUtQzenyfS', NULL, '2024-06-17 11:32:56', '2024-06-17 11:32:56', 4, 1);
-INSERT INTO `users` VALUES (5, 'Staf2', 'staf2@gmail.com', 'staf2', NULL, '$2y$10$S1bQJrkDbP3ksYVi/1.7KeZJE3afqLhEiVQipiFkvGyG7VBui2oIe', NULL, '2024-06-17 15:35:47', '2024-06-17 15:35:47', 4, 1);
+INSERT INTO `users` VALUES (2, 'Staf1', 'staf1@gmail.com', 'staf1', NULL, '$2y$10$MDC9EHIBnMNO8aBW4cvftOQS8/9EP74TQvdO3RJt.PXmUtQzenyfS', NULL, '2024-06-17 11:32:56', '2024-07-17 20:50:51', 2, 1);
+INSERT INTO `users` VALUES (5, 'Staf2', 'staf2@gmail.com', 'staf2', NULL, '$2y$10$S1bQJrkDbP3ksYVi/1.7KeZJE3afqLhEiVQipiFkvGyG7VBui2oIe', NULL, '2024-06-17 15:35:47', '2024-07-17 20:50:59', 3, 1);
 INSERT INTO `users` VALUES (6, 'Staf 3', 'staf3@gmail.com', 'staf3', NULL, '$2y$10$AHYC.9idpNumqflH9649NORAveZaUN7wOs.CbRx0PhW8wO/UuLEK2', NULL, '2024-06-17 16:24:52', '2024-06-17 16:24:52', 4, 1);
-INSERT INTO `users` VALUES (7, 'Staf4', 'staf4@gmail.com', 'staf4', NULL, '$2y$10$WxVwdcW/30TDaf9QdTE2IeEeeIO5BQ9sZcwb6eqixwlF.StqeKKDG', NULL, '2024-06-17 17:29:53', '2024-06-17 17:29:53', 4, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
