@@ -15,7 +15,7 @@ class CreatePengaturanRequest extends FormRequest
     {
         return [
             'namaaplikasi_pengaturan' => 'required',
-            'namausaha_pengaturan' => 'required',
+            'namainstansi_pengaturan' => 'required',
             'notelepon_pengaturan' => 'required',
         ];
     }
@@ -24,7 +24,7 @@ class CreatePengaturanRequest extends FormRequest
     {
         return [
             'namaaplikasi_pengaturan.required' => 'Nama Aplikasi wajib diisi',
-            'namausaha_pengaturan.required' => 'Nama Usaha wajib diisi',
+            'namainstansi_pengaturan.required' => 'Nama Usaha wajib diisi',
             'notelepon_pengaturan.required' => 'No. Telepon wajib diisi',
         ];
     }

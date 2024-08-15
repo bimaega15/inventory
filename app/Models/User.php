@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -46,6 +45,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     public $timestamps = true;
 
     public function scopeDataTable($query)
@@ -56,41 +56,6 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class, 'users_id', 'id');
-    }
-
-    public function penjualanPembayaran()
-    {
-        return $this->hasMany(PenjualanPembayaran::class);
-    }
-
-    public function penjualan()
-    {
-        return $this->hasMany(Penjualan::class);
-    }
-
-    public function penjualanCicilan()
-    {
-        return $this->hasMany(PenjualanCicilan::class);
-    }
-
-    public function pembelian()
-    {
-        return $this->hasMany(Pembelian::class);
-    }
-
-    public function pembelianCicilan()
-    {
-        return $this->hasMany(PembelianCicilan::class);
-    }
-
-    public function pembelianPembayaran()
-    {
-        return $this->hasMany(PembelianPembayaran::class);
-    }
-
-    public function orderBarang()
-    {
-        return $this->hasMany(OrderBarang::class);
     }
 
     public function getUsersKasir()

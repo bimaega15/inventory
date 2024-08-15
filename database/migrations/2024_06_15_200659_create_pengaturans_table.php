@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('pengaturan', function (Blueprint $table) {
             $table->id();
             $table->string('namaaplikasi_pengaturan');
-            $table->string('namausaha_pengaturan');
+            $table->string('namainstansi_pengaturan');
             $table->string('alamat_pengaturan')->nullable();
-            $table->string('notelepon_pengaturan');
+            $table->string('notelepon_pengaturan')->nullable();
             $table->string('deskripsi_pengaturan')->nullable();
             $table->string('logoaplikasi_pengaturan')->nullable();
+            $table->string('video_pengaturan')->nullable();
             $table->timestamps();
         });
     }

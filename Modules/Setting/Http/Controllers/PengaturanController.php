@@ -50,7 +50,7 @@ class PengaturanController extends Controller
         $logoaplikasi_pengaturan = UtilsHelper::uploadFile($fileLogoAplikasi, 'setting', null, 'pengaturan', 'logoaplikasi_pengaturan');
         $data = [
             'namaaplikasi_pengaturan' => $request->input('namaaplikasi_pengaturan'),
-            'namausaha_pengaturan' => $request->input('namausaha_pengaturan'),
+            'namainstansi_pengaturan' => $request->input('namainstansi_pengaturan'),
             'alamat_pengaturan' => $request->input('alamat_pengaturan'),
             'notelepon_pengaturan' => $request->input('notelepon_pengaturan'),
             'deskripsi_pengaturan' => $request->input('deskripsi_pengaturan'),
@@ -95,7 +95,7 @@ class PengaturanController extends Controller
         $logoaplikasi_pengaturan = UtilsHelper::uploadFile($fileLogoAplikasi, 'setting', $id, 'pengaturan', 'logoaplikasi_pengaturan');
         $data = [
             'namaaplikasi_pengaturan' => $request->input('namaaplikasi_pengaturan'),
-            'namausaha_pengaturan' => $request->input('namausaha_pengaturan'),
+            'namainstansi_pengaturan' => $request->input('namainstansi_pengaturan'),
             'alamat_pengaturan' => $request->input('alamat_pengaturan'),
             'notelepon_pengaturan' => $request->input('notelepon_pengaturan'),
             'deskripsi_pengaturan' => $request->input('deskripsi_pengaturan'),

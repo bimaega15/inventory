@@ -2,8 +2,8 @@
     <div class="mb-4">
         <x-form-input-vertical label="Nama Aplikasi" name="namaaplikasi_pengaturan" placeholder="Nama Aplikasi..."
             value="{{ isset($row) ? $row->namaaplikasi_pengaturan ?? '' : '' }}" />
-        <x-form-input-vertical label="Nama Usaha" name="namausaha_pengaturan" placeholder="Nama Usaha..."
-            value="{{ isset($row) ? $row->namausaha_pengaturan ?? '' : '' }}" />
+        <x-form-input-vertical label="Nama Usaha" name="namainstansi_pengaturan" placeholder="Nama Usaha..."
+            value="{{ isset($row) ? $row->namainstansi_pengaturan ?? '' : '' }}" />
         <x-form-textarea-vertical label="Alamat" name="alamat_pengaturan" placeholder="Alamat..."
             value="{{ isset($row) ? $row->alamat_pengaturan ?? '' : '' }}" />
         <x-form-input-vertical type="number" label="No. Telepon" name="notelepon_pengaturan"

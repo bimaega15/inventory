@@ -17,12 +17,13 @@ class KonfigurasiSeeder extends Seeder
     {
         //
         Pengaturan::create([
-            'namaaplikasi_pengaturan' => 'Inventory App',
-            'namausaha_pengaturan' => 'PT. Inventory Laras',
-            'alamat_pengaturan' => 'Alamat Invetory Laras',
-            'notelepon_pengaturan' => '08283928',
-            'deskripsi_pengaturan' => 'Deskripsi Inventory Laras',
+            'namaaplikasi_pengaturan' => 'Sistem Surat Menyurat',
+            'namainstansi_pengaturan' => 'Pengadilan Negeri',
+            'alamat_pengaturan' => 'Alamat Surat Menyurat',
+            'notelepon_pengaturan' => '082277506232',
+            'deskripsi_pengaturan' => 'Deskripsi Surat Menyurat',
             'logoaplikasi_pengaturan' => 'profile.jpg',
+            'video_pengaturan' => '',
         ]);
     }
 }

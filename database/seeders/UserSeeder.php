@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
         ]);
         $user->assignRole('Admin');
 
-        $profile = Profile::create([
+        Profile::create([
             'nama_profile' => 'admin',
             'nohp_profile' => '082277506232',
             'alamat_profile' => "Jakarta pusat",

@@ -7,6 +7,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Models\Menu;
+use App\Models\MenuPermissions;
 use Modules\Setting\Http\Requests\CreatePostMenuRequest;
 
 class PermissionsController extends Controller
@@ -16,10 +17,10 @@ class PermissionsController extends Controller
         $createTree = UtilsHelper::createStructureTree();
         if ($request->ajax()) {
             $createTree = UtilsHelper::createStructureTree();
-            return view('setting::menu.renderTree', compact('createTree'))->render();
+            return view('setting::permissions.renderTree', compact('createTree'))->render();
         }
 
-        return view('setting::menu.index');
+        return view('setting::permissions.index');
     }
 
     /**
@@ -37,7 +38,7 @@ class PermissionsController extends Controller
             ];
         }
         $action = url('setting/menu');
-        return view('setting::menu.form', compact('daftarMenu', 'action', 'array_menu'));
+        return view('setting::permissions.form', compact('daftarMenu', 'action', 'array_menu'));
     }
 
     /**
@@ -45,33 +46,42 @@ class PermissionsController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(CreatePostMenuRequest $request)
+    public function store(Request $request)
     {
         //
-        $data = $request->all();
-        $insertMenu = Menu::create($data);
-        $menu_id = $insertMenu->id;
-
-        $menu_root = $request->input('menu_root');
-        if ($menu_root != null) {
-            $getMenu = Menu::find($menu_root);
-            $getMenuChildren = json_decode($getMenu->children_menu, 1);
-            $getMenuChildren = implode(',', $getMenuChildren);
-
-            $children_menu_update = $menu_id;
-            if ($getMenuChildren != null) {
-                $children_menu_update = $getMenuChildren . ',' . $menu_id;
+        $data = UtilsHelper::getUrlPermission();
+        $lengthData = count($data);
+        $dataDb = [];
+        foreach ($data as $key => $result) {
+            $check_link_mpermissions = MenuPermissions::where('link_mpermissions', $result)->first();
+            $no = 1;
+            if($check_link_mpermissions == null){
+                $dataDb = [
+                    'root_mpermissions' => null,
+                    'no_mpermissions' => $no,
+                    'nama_mpermissions' => null,
+                    'link_mpermissions' => $result,
+                    'isnode_mpermissions' => 0,
+                    'ischildren_mpermissions' => 1,
+                    'childrenmenu_mpermissions' => null,
+                ];
+                MenuPermissions::create($dataDb);
+            } else {
+                $dataDb = [
+                    'root_mpermissions' => null,
+                    'no_mpermissions' => $no,
+                    'nama_mpermissions' => null,
+                    'link_mpermissions' => $result,
+                    'isnode_mpermissions' => 0,
+                    'ischildren_mpermissions' => 1,
+                    'childrenmenu_mpermissions' => null,
+                ];
+                MenuPermissions::find($check_link_mpermissions->id)->update($dataDb);
             }
-            $children_menu_update = explode(',', $children_menu_update);
-            $children_menu_update = json_encode($children_menu_update);
-
-            $getMenu->children_menu = $children_menu_update;
-            $getMenu->is_node = 1;
-            $getMenu->is_children = 0;
-            $getMenu->save();
+            $no++;
         }
 
-        return response()->json('Berhasil menambahkan data', 201);
+        return response()->json('Berhasil management '.$lengthData.' permission menu', 201);
     }
 
     /**
@@ -81,7 +91,7 @@ class PermissionsController extends Controller
      */
     public function show($id)
     {
-        return view('setting::menu.form');
+        return view('setting::permissions.form');
     }
 
     /**
@@ -104,7 +114,7 @@ class PermissionsController extends Controller
                 'id' => $item->id,
             ];
         }
-        return view('setting::menu.form', compact('menu', 'daftarMenu', 'menuRootId', 'menuChildren', 'action', 'array_menu'));
+        return view('setting::permissions.form', compact('menu', 'daftarMenu', 'menuRootId', 'menuChildren', 'action', 'array_menu'));
     }
 
     /**
@@ -281,7 +291,7 @@ class PermissionsController extends Controller
     public function renderTree()
     {
         $createTree = UtilsHelper::createStructureTree();
-        return view('setting::menu.renderTreeAction', compact('createTree'))->render();
+        return view('setting::permissions.renderTreeAction', compact('createTree'))->render();
     }
 
     public function dataTable()

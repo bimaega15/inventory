@@ -43,10 +43,6 @@
         </li>
         @endif
         
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Transaksi Toko</span>
-        </li>
-
         @php
             $activeRoutePurchase = ['purchase/kasir', 'purchase/penjualan', 'purchase/belumLunas', 'purchase/lunas'];
         @endphp
@@ -56,6 +52,9 @@
         @endphp
 
         @if (in_array($myRoles, $allowedPenjualan))
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Transaksi Toko</span>
+        </li>
         <li
             class="menu-item {{ collect($activeRoutePurchase)->contains(function ($route) {
                 return request()->is($route) || str_starts_with(request()->url(), url($route));
@@ -389,13 +388,13 @@
                     </a>
                 </li>
                 @endif
-                {{-- @if (in_array($myRoles, ['admin']))
+                @if (in_array($myRoles, ['admin']))
                 <li class="menu-item {{ request()->is('setting/permissions') ? 'active' : '' }}">
                     <a href="{{ url('setting/permissions') }}" class="menu-link">
                         <div data-i18n="Permission">Permission</div>
                     </a>
                 </li>
-                @endif --}}
+                @endif
                 <li class="menu-item {{ request()->is('setting/user') ? 'active' : '' }}">
                     <a href="{{ url('setting/user') }}" class="menu-link">
                         <div data-i18n="User">User</div>

@@ -229,3 +229,8 @@ Breadcrumbs::for('menu', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Menu', url('setting/menu'));
 });
+// Home > permissions
+Breadcrumbs::for('permissions', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Permission', url('setting/permissions'));
+});
