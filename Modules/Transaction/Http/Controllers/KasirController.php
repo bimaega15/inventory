@@ -188,17 +188,17 @@ class KasirController extends Controller
         }
         PembelianProduct::insert($arrayPembelianProduct);
 
-        $pembelianPembayaran = $request->input('pembelian_pembayaran');
-        $arrayPembelianPembayaran = [];
-        foreach ($pembelianPembayaran as $key => $item) {
-            $arrayPembelianPembayaran[] = array_merge(
-                $item,
-                [
-                    'pembelian_id' => $pembelian->id,
-                ]
-            );
-        }
-        PembelianPembayaran::insert($arrayPembelianPembayaran);
+        // $pembelianPembayaran = $request->input('pembelian_pembayaran');
+        // $arrayPembelianPembayaran = [];
+        // foreach ($pembelianPembayaran as $key => $item) {
+        //     $arrayPembelianPembayaran[] = array_merge(
+        //         $item,
+        //         [
+        //             'pembelian_id' => $pembelian->id,
+        //         ]
+        //     );
+        // }
+        // PembelianPembayaran::insert($arrayPembelianPembayaran);
 
         // pengurangan stock
         foreach ($arrayPembelianProduct as $key => $value) {

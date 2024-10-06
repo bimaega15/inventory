@@ -10,7 +10,7 @@
                         value="{{ isset($row) ? $row->nama_barang ?? '' : '' }}" />
                     <x-form-textarea-horizontal label="Deskripsi" name="deskripsi_barang" placeholder="Deskripsi..."
                         value="{{ isset($row) ? $row->deskripsi_barang ?? '' : '' }}" />
-                    <x-form-input-horizontal label="Harga jual" name="hargajual_barang" placeholder="Harga jual..."
+                    <x-form-input-horizontal label="Harga barang" name="hargajual_barang" placeholder="Harga barang..."
                         value="{{ isset($row) ? number_format($row->hargajual_barang, '0', '.', ',') ?? '' : '' }}" />
 
                     <x-form-select-horizontal label="Kategori" name="kategori_id" :data="$array_kategori"

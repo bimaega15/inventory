@@ -45,8 +45,11 @@ class SupplierController extends Controller
                     return UtilsHelper::tanggalBulanTahunKonversi($row->transaksi_pembelian);
                 })
                 ->addColumn('total_pembayaran', function ($row) {
-                    return UtilsHelper::formatUang($row->total_pembayaran);
+                    return $row->pembelianProduct->sum('jumlah_pembelianproduct');
                 })
+                // ->addColumn('total_pembayaran', function ($row) {
+                //     return UtilsHelper::formatUang($row->total_pembayaran);
+                // })
                 ->rawColumns(['transaksi_pembelian'])
                 ->toJson();
         }

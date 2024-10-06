@@ -30,7 +30,7 @@
                                 <th>Invoice</th>
                                 <th>Tanggal</th>
                                 <th>Supplier</th>
-                                <th>Total Transaksi</th>
+                                <th>Barang Masuk</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">

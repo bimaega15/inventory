@@ -40,11 +40,15 @@ class PeriodePembelianController extends Controller
                     return UtilsHelper::tanggalBulanTahunKonversi($row->transaksi_pembelian);
                 })
                 ->addColumn('total_pembelian', function ($row) {
-                    $bayarPembelian = $row->bayar_pembelian;
-                    $kembalianPembelian = $row->kembalian_pembelian;
-                    $calculate = $bayarPembelian - $kembalianPembelian;
+                    $calculate = $row->pembelianProduct->sum('jumlah_pembelianproduct');
                     return UtilsHelper::formatUang($calculate);
                 })
+                // ->addColumn('total_pembelian', function ($row) {
+                //     $bayarPembelian = $row->bayar_pembelian;
+                //     $kembalianPembelian = $row->kembalian_pembelian;
+                //     $calculate = $bayarPembelian - $kembalianPembelian;
+                //     return UtilsHelper::formatUang($calculate);
+                // })
                 ->rawColumns(['transaksi_pembelian', 'total_pembelian'])
                 ->toJson();;
         }

@@ -78,8 +78,8 @@
                 <tr>
                     <th>Deskripsi Barang</th>
                     <th>Qty</th>
-                    <th>Harga</th>
-                    <th>Total Harga</th>
+                    <th>Harga Barang</th>
+                    {{-- <th>Total Harga</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -88,7 +88,7 @@
                         <td>{{ $item->barang->nama_barang }}</td>
                         <td>{{ $item->jumlah_penjualanproduct }}</td>
                         <td>{{ UtilsHelp::formatUang($item->barang->hargajual_barang) }}</td>
-                        <td>{{ UtilsHelp::formatUang($item->subtotal_penjualanproduct) }}</td>
+                        {{-- <td>{{ UtilsHelp::formatUang($item->subtotal_penjualanproduct) }}</td> --}}
                     </tr>
                 @endforeach
 
@@ -100,13 +100,13 @@
                 <td style="vertical-align: top; text-align: right;">
                     <table style="margin-left: auto;">
                         <tr>
-                            <td>Total</td>
+                            <td>Total Barang Keluar</td>
                             <td>:</td>
-                            <td style="padding: 0 80px;">Rp.</td>
+                            <td style="padding: 0 80px;"></td>
                             <td>{{ UtilsHelp::formatUang($penjualan->total_penjualan) }}</td>
                         </tr>
 
-                        @foreach ($penjualan->penjualanPembayaran as $item)
+                        {{-- @foreach ($penjualan->penjualanPembayaran as $item)
                             <tr>
                                 <td>{{ $item->kategoriPembayaran->nama_kpembayaran }}</td>
                                 <td>:</td>
@@ -129,7 +129,7 @@
                                 <td style="padding: 0 80px;">Rp.</td>
                                 <td>{{ UtilsHelp::formatUang($getPenjualan['kembalian']) }} </td>
                             </tr>
-                        @endif
+                        @endif --}}
                     </table>
                 </td>
             </tr>

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'jenis_hari' => [
+    'c' => [
         'senin' => 'Senin',
         'selasa' => 'Selasa',
         'rabu' => 'Rabu',

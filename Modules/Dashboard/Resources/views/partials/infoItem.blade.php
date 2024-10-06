@@ -6,7 +6,7 @@
                     <div class="d-flex justify-content-between align-item-center">
                         <div>
                             <h3 class="text-dark">{{ UtilsHelp::formatUang($barang_terjual) }}</h3>
-                            <span class="text-dark">Total <strong>Barang Terjual</strong> <i>Hari ini</i> </span>
+                            <span class="text-dark">Total <strong>Barang Keluar</strong> <i>Hari ini</i> </span>
                         </div>
                         <div>
                             <i class="fa-solid fa-cart-shopping fa-4x text-primary"></i>
@@ -35,13 +35,22 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-item-center">
                         <div>
+                            <h3 class="text-dark">{{ UtilsHelp::formatUang($barang_masuk) }}</h3>
+                            <span class="text-dark">Total <strong>Barang Masuk</strong> Hari ini </span>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-table fa-4x text-success"></i>
+                        </div>
+                    </div>
+                    {{-- <div class="d-flex justify-content-between align-item-center">
+                        <div>
                             <h3 class="text-dark">{{ UtilsHelp::formatUang($invoice_penjualan) }}</h3>
                             <span class="text-dark">Total <strong>Invoice Penjualan</strong> </span>
                         </div>
                         <div>
                             <i class="fa-solid fa-table fa-4x text-success"></i>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

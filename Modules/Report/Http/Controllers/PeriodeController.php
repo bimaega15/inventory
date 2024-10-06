@@ -34,11 +34,15 @@ class PeriodeController extends Controller
                     return UtilsHelper::tanggalBulanTahunKonversi($row->transaksi_penjualan);
                 })
                 ->addColumn('total_penjualan', function ($row) {
-                    $bayarPenjualan = $row->bayar_penjualan;
-                    $kembalianPenjualan = $row->kembalian_penjualan;
-                    $calculate = $bayarPenjualan - $kembalianPenjualan;
-                    return UtilsHelper::formatUang($calculate);
+                    $jumlah_penjualanproduct = $row->penjualanProduct->sum('jumlah_penjualanproduct');
+                    return UtilsHelper::formatUang($jumlah_penjualanproduct);
                 })
+                // ->addColumn('total_penjualan', function ($row) {
+                //     $bayarPenjualan = $row->bayar_penjualan;
+                //     $kembalianPenjualan = $row->kembalian_penjualan;
+                //     $calculate = $bayarPenjualan - $kembalianPenjualan;
+                //     return UtilsHelper::formatUang($calculate);
+                // })
                 ->rawColumns(['transaksi_penjualan', 'total_penjualan'])
                 ->toJson();;
         }

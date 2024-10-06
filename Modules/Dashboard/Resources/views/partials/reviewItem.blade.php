@@ -12,7 +12,7 @@
                                 <th>No.</th>
                                 <th>Kode Barang</th>
                                 <th>Nama</th>
-                                <th>Terjual</th>
+                                <th>Barang Keluar</th>
                             </tr>
                         </thead>
                         <tbody></tbody>

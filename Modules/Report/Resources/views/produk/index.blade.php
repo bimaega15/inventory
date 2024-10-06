@@ -29,7 +29,7 @@
                                 <th width="10%;">No.</th>
                                 <th>Tanggal</th>
                                 <th>Barang</th>
-                                <th>Terjual</th>
+                                <th>Barang Keluar</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">

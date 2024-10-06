@@ -22,9 +22,9 @@
                     <th>Nama</th>
                     <th style="width: 15%;">Qty</th>
                     <th>Harga</th>
-                    <th>Diskon</th>
-                    <th style="width: 15%;"></th>
-                    <th>Total Harga</th>
+                    {{-- <th>Diskon</th> --}}
+                    {{-- <th style="width: 15%;"></th> --}}
+                    {{-- <th>Total Harga</th> --}}
                     <th>#</th>
                 </tr>
             </thead>
@@ -34,7 +34,7 @@
                 <tr>
                     <td colspan="7">
                         <div class="d-flex justify-content-center flex-wrap align-items-center">
-                            <h4 class="fw-bold p-0 m-0">Total: Rp. <span class="total_harga_all" class="me-3">0</span>
+                            <h4 class="fw-bold p-0 m-0">Total Barang: <span class="total_harga_all" class="me-3">0</span>
                             </h4>
                             {{-- <strong class="text-primary" style="cursor: pointer;"> PRINT</strong> --}}
                         </div>
@@ -42,5 +42,17 @@
                 </tr>
             </tfoot>
         </table>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-6"></div>
+        <div class="col-lg-6">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-primary btn-bayar" data-bs-toggle="modal"
+                    data-bs-target="#modalConfirmBayar" disabled="disabled">
+                    <i class="fa-solid fa-money-bill me-2"></i> Bayar
+                </button>
+            </div>
+        </div>
     </div>
 </div>

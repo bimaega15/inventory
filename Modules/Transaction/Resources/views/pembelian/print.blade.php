@@ -79,7 +79,7 @@
                     <th>Deskripsi Barang</th>
                     <th>Qty</th>
                     <th>Harga</th>
-                    <th>Total Harga</th>
+                    {{-- <th>Total Harga</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -88,7 +88,7 @@
                         <td>{{ $item->barang->nama_barang }}</td>
                         <td>{{ $item->jumlah_pembelianproduct }}</td>
                         <td>{{ UtilsHelp::formatUang($item->barang->hargajual_barang) }}</td>
-                        <td>{{ UtilsHelp::formatUang($item->subtotal_pembelianproduct) }}</td>
+                        {{-- <td>{{ UtilsHelp::formatUang($item->subtotal_pembelianproduct) }}</td> --}}
                     </tr>
                 @endforeach
 
@@ -102,10 +102,10 @@
                         <tr>
                             <td>Total</td>
                             <td>:</td>
-                            <td style="padding: 0 80px;">Rp.</td>
+                            <td style="padding: 0 80px;"></td>
                             <td>{{ UtilsHelp::formatUang($pembelian->total_pembelian) }}</td>
                         </tr>
-                        @foreach ($pembelian->pembelianPembayaran as $item)
+                        {{-- @foreach ($pembelian->pembelianPembayaran as $item)
                             <tr>
                                 <td>{{ $item->kategoriPembayaran->nama_kpembayaran }}</td>
                                 <td>:</td>
@@ -130,7 +130,7 @@
                                     {{ UtilsHelp::formatUang($getPembelian['kembalian']) }}
                                 </td>
                             </tr>
-                        @endif
+                        @endif --}}
                     </table>
                 </td>
             </tr>

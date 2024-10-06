@@ -113,34 +113,6 @@ $(document).ready(function () {
                     </span>
                 </td>
                 <td>
-                    <select name="type_discount" class="form-select" data-id="${value.id
-                }">
-                        <option value="" selected>Tipe Diskon</option>`;
-
-            Object.keys(jsonTipeDiskon).map((v, i) => {
-                output += `
-                <option value="${v}" ${value.tipeDiskon == v ? "selected" : ""
-                    }>${jsonTipeDiskon[v]}</option>
-                `;
-            });
-
-            output += `
-                    </select>
-                </td>
-                <td>
-                    <input
-                    name="jumlah_diskon"
-                    class="jumlahDiskon form-control" 
-                    data-id="${value.id}" 
-                    value="${value.jumlahDiskon}"
-                    disabled />
-                </td>
-                <td>
-                    <span class="totalHarga" data-id="${value.id}">
-                        ${number_format(value.totalHarga, 0, ".", ",")}
-                    </span>
-                </td>
-                <td>
                     <button class="btn btn-delete" title="Hapus item" data-id="${value.id
                 }">
                         <i class="fa-solid fa-circle-xmark fa-2x text-danger"></i
@@ -168,7 +140,7 @@ $(document).ready(function () {
         );
 
         totalHargaItems = orderItems.reduce(function (sum, current) {
-            return sum + current.totalHarga;
+            return sum + current.qty;
         }, 0);
         $(".total_harga_all").html(number_format(totalHargaItems, 0, ".", ","));
     };
@@ -653,48 +625,55 @@ $(document).ready(function () {
     };
 
     const handleButtonBayar = () => {
-        let buttonDisabledTidakLangsung = false;
-        let buttonDisabledLangsung = false;
-        let buttonDisabled;
+        // let buttonDisabledTidakLangsung = false;
+        // let buttonDisabledLangsung = false;
+        // let buttonDisabled;
 
-        metodePembayaran.map((value, index) => {
-            if (
-                value.kategori_pembayaran_selected.nama_kpembayaran.toLowerCase() !==
-                "langsung"
-            ) {
-                if (
-                    value.kategori_pembayaran_selected === undefined ||
-                    value.sub_pembayaran_selected === undefined ||
-                    value.bayar === "" ||
-                    value.user_selected === undefined ||
-                    value.nama_pemilik_kartu === "" ||
-                    value.nomor_kartu === "" ||
-                    orderItems.length == 0 ||
-                    totalHargaItems == 0
-                ) {
-                    buttonDisabledTidakLangsung = true;
-                } else {
-                    buttonDisabledTidakLangsung = false;
-                }
-            } else {
-                if (
-                    value.kategori_pembayaran_selected === undefined ||
-                    value.sub_pembayaran_selected === undefined ||
-                    value.bayar === "" ||
-                    value.user_selected === undefined ||
-                    value.dibayarkan_oleh === "" ||
-                    orderItems.length == 0 ||
-                    totalHargaItems == 0
-                ) {
-                    buttonDisabledLangsung = true;
-                } else {
-                    buttonDisabledLangsung = false;
-                }
+        // metodePembayaran.map((value, index) => {
+        //     if (
+        //         value.kategori_pembayaran_selected.nama_kpembayaran.toLowerCase() !==
+        //         "langsung"
+        //     ) {
+        //         if (
+        //             value.kategori_pembayaran_selected === undefined ||
+        //             value.sub_pembayaran_selected === undefined ||
+        //             value.bayar === "" ||
+        //             value.user_selected === undefined ||
+        //             value.nama_pemilik_kartu === "" ||
+        //             value.nomor_kartu === "" ||
+        //             orderItems.length == 0 ||
+        //             totalHargaItems == 0
+        //         ) {
+        //             buttonDisabledTidakLangsung = true;
+        //         } else {
+        //             buttonDisabledTidakLangsung = false;
+        //         }
+        //     } else {
+        //         if (
+        //             value.kategori_pembayaran_selected === undefined ||
+        //             value.sub_pembayaran_selected === undefined ||
+        //             value.bayar === "" ||
+        //             value.user_selected === undefined ||
+        //             value.dibayarkan_oleh === "" ||
+        //             orderItems.length == 0 ||
+        //             totalHargaItems == 0
+        //         ) {
+        //             buttonDisabledLangsung = true;
+        //         } else {
+        //             buttonDisabledLangsung = false;
+        //         }
+        //     }
+        // });
+        // buttonDisabled = buttonDisabledTidakLangsung || buttonDisabledLangsung;
+        // if (metodePembayaran.length === 0) {
+        //     buttonDisabled = true;
+        // }
+        const buttonDisabled = false;
+        for (let i = 0; i < orderItems.length; i++) {
+            const elementQty = orderItems[i];
+            if(elementQty === 0){
+                buttonDisabled = true;
             }
-        });
-        buttonDisabled = buttonDisabledTidakLangsung || buttonDisabledLangsung;
-        if (metodePembayaran.length === 0) {
-            buttonDisabled = true;
         }
         $(".btn-bayar").attr("disabled", buttonDisabled);
     };
@@ -785,7 +764,7 @@ $(document).ready(function () {
                         sum,
                         current
                     ) {
-                        return sum + current.totalHarga;
+                        return sum + current.qty;
                     },
                         0);
 
@@ -905,7 +884,7 @@ $(document).ready(function () {
             }
 
             totalHargaItems = orderItems.reduce(function (sum, current) {
-                return sum + current.totalHarga;
+                return sum + current.qty;
             }, 0);
 
             renderViewKasir();
@@ -954,7 +933,7 @@ $(document).ready(function () {
         if (searchOrderItems !== -1) {
             orderItems.splice(searchOrderItems, 1);
             totalHargaItems = orderItems.reduce(function (sum, current) {
-                return sum + current.totalHarga;
+                return sum + current.qty;
             }, 0);
             renderViewKasir();
         }
@@ -1110,22 +1089,22 @@ $(document).ready(function () {
     });
 
     const payloadKasir = () => {
-        const indexLast = metodePembayaran.length - 1;
-        const getHutang = parseFloat(metodePembayaran[indexLast].hutang);
-        const getBayar = metodePembayaran.reduce((total, item) => {
-            return parseFloat(total) + parseFloat(item.bayar);
-        }, 0);
+        // const indexLast = metodePembayaran.length - 1;
+        // const getHutang = parseFloat(metodePembayaran[indexLast].hutang);
+        // const getBayar = metodePembayaran.reduce((total, item) => {
+        //     return parseFloat(total) + parseFloat(item.bayar);
+        // }, 0);
 
         const payloadPembelian = {
             invoice_pembelian: jsonNoInvoice,
             transaksi_pembelian: formatDate(),
             supplier_id: supplierId,
-            tipe_pembelian: getHutang > 0 ? "hutang" : "cash",
+            tipe_pembelian: 'cash',
             users_id: jsonDefaultUser,
             total_pembelian: parseFloat(totalHargaItems),
-            hutang_pembelian: metodePembayaran[indexLast].hutang,
-            kembalian_pembelian: metodePembayaran[indexLast].kembalian,
-            bayar_pembelian: getBayar,
+            hutang_pembelian: 0,
+            kembalian_pembelian: 0,
+            bayar_pembelian: 0,
         };
 
         const payloadPembelianProduct = [];
@@ -1141,27 +1120,27 @@ $(document).ready(function () {
             });
         });
 
-        const payloadPembelianPembayaran = [];
-        metodePembayaran.map((value, index) => {
-            payloadPembelianPembayaran.push({
-                kategori_pembayaran_id: value.kategori_pembayaran_selected.id,
-                sub_pembayaran_id: value.sub_pembayaran_selected.id,
-                bayar_pbpembayaran: value.bayar,
-                dibayaroleh_pbpembayaran:
-                    value.dibayarkan_oleh === undefined
-                        ? ""
-                        : value.dibayarkan_oleh,
-                users_id: value.user_selected.id,
-                kembalian_pbpembayaran: value.kembalian,
-                hutang_pbpembayaran: value.hutang,
-                nomorkartu_pbpembayaran:
-                    value.nomor_kartu === undefined ? "" : value.nomor_kartu,
-                pemilikkartu_pbpembayaran:
-                    value.nama_pemilik_kartu === undefined
-                        ? ""
-                        : value.nama_pemilik_kartu,
-            });
-        });
+        // const payloadPembelianPembayaran = [];
+        // metodePembayaran.map((value, index) => {
+        //     payloadPembelianPembayaran.push({
+        //         kategori_pembayaran_id: value.kategori_pembayaran_selected.id,
+        //         sub_pembayaran_id: value.sub_pembayaran_selected.id,
+        //         bayar_pbpembayaran: value.bayar,
+        //         dibayaroleh_pbpembayaran:
+        //             value.dibayarkan_oleh === undefined
+        //                 ? ""
+        //                 : value.dibayarkan_oleh,
+        //         users_id: value.user_selected.id,
+        //         kembalian_pbpembayaran: value.kembalian,
+        //         hutang_pbpembayaran: value.hutang,
+        //         nomorkartu_pbpembayaran:
+        //             value.nomor_kartu === undefined ? "" : value.nomor_kartu,
+        //         pemilikkartu_pbpembayaran:
+        //             value.nama_pemilik_kartu === undefined
+        //                 ? ""
+        //                 : value.nama_pemilik_kartu,
+        //     });
+        // });
 
         const payloadIsEdit = {
             isEdit: $(".isEdit").data("value"),
@@ -1171,7 +1150,7 @@ $(document).ready(function () {
         const payload = {
             pembelian: payloadPembelian,
             pembelian_product: payloadPembelianProduct,
-            pembelian_pembayaran: payloadPembelianPembayaran,
+            // pembelian_pembayaran: payloadPembelianPembayaran,
             payload_is_edit: payloadIsEdit,
         };
 
@@ -1199,10 +1178,11 @@ $(document).ready(function () {
 
     body.on("click", ".btn-confirm-bayar", function (e) {
         e.preventDefault();
+        const setUrl = $(".url_simpan_kasir").data("url");
 
         $.ajax({
             type: "post",
-            url: $(".url_simpan_kasir").data("url"),
+            url: setUrl,
             data: payloadKasir(),
             dataType: "json",
             beforeSend: function () {

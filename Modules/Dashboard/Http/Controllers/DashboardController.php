@@ -64,6 +64,20 @@ class DashboardController extends Controller
             ->sum('penjualan_product.jumlah_penjualanproduct');
         // end jumlah barang
 
+        // jumlah barang masuk
+        $getBarang = new Barang();
+        $barangMasuk = $getBarang->getReportBarang()
+            ->join('pembelian_product', 'pembelian_product.barang_id', '=', 'barang.id', 'left')
+            ->select(
+                'barang.*',
+                'pembelian_product.created_at',
+                'pembelian_product.jumlah_pembelianproduct'
+            )
+            ->whereDate('pembelian_product.created_at', $date)
+            ->sum('pembelian_product.jumlah_pembelianproduct');
+        // end jumlah barang
+
+
         // jumlah barang
         $jumlahBarang = Barang::dataTable()->get()->count();
         // jumlah barang
@@ -78,6 +92,7 @@ class DashboardController extends Controller
             'total_penjualan' => $getPenjualan,
             'total_penjualan_cash' => $getPenjualanCash,
             'barang_terjual' => $barangTerjual,
+            'barang_masuk' => $barangMasuk,
             'jumlah_barang' => $jumlahBarang,
             'invoice_penjualan' => $getInvoicePenjualan,
         ];

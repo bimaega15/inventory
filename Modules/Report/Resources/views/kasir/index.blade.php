@@ -1,7 +1,7 @@
 @extends('layouts.app.index')
 
 @section('title')
-    Halaman Laporan Kasir
+    Halaman Laporan Barang Keluar
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
             <h5 class="card-header">
                 <div class="d-flex flex-wrap justify-content-between">
                     <div>
-                        Data Laporan Kasir
+                        Data Laporan Barang Keluar
                     </div>
                     <div>
                     </div>

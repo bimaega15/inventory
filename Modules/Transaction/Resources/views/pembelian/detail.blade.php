@@ -64,7 +64,7 @@
                                 <th>Nama Barang</th>
                                 <th>Harga</th>
                                 <th>Qty</th>
-                                <th>Sub total</th>
+                                {{-- <th>Sub total</th> --}}
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
@@ -73,19 +73,18 @@
                                     <td>{{ $item->barang->nama_barang }}</td>
                                     <td>{{ UtilsHelp::formatUang($item->barang->hargajual_barang) }}</td>
                                     <td>{{ $item->jumlah_pembelianproduct }}</td>
-                                    <td>{{ UtilsHelp::formatUang($item->subtotal_pembelianproduct) }}</td>
+                                    {{-- <td>{{ UtilsHelp::formatUang($item->subtotal_pembelianproduct) }}</td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2"></td>
-                                <td><strong>Total:</strong></td>
-                                <td colspan="1" class="text-end">
+                                <td colspan="2" class="text-end"><strong>Total:</strong></td>
+                                <td class="text-start">
                                     <strong>{{ UtilsHelp::formatUang($row->total_pembelian) }}</strong>
                                 </td>
                             </tr>
-                            @foreach ($row->pembelianPembayaran as $item)
+                            {{-- @foreach ($row->pembelianPembayaran as $item)
                                 <tr>
                                     <td colspan="2"></td>
                                     <td><strong>{{ $item->kategoriPembayaran->nama_kpembayaran }}</strong></td>
@@ -114,7 +113,7 @@
                                         <strong>{{ UtilsHelp::formatUang($getPembelian['kembalian']) }}</strong>
                                     </td>
                                 </tr>
-                            @endif
+                            @endif --}}
                         </tfoot>
                     </table>
                 </div>

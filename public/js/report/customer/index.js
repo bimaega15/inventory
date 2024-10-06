@@ -60,18 +60,18 @@ $(document).ready(function () {
                     searchable: false,
                     orderable: false,
                 },
-                {
-                    data: "total_pembelian",
-                    name: "total_pembelian",
-                    searchable: false,
-                    orderable: false,
-                },
-                {
-                    data: "hutang_pembelian",
-                    name: "hutang_pembelian",
-                    searchable: false,
-                    orderable: false,
-                },
+                // {
+                //     data: "total_pembelian",
+                //     name: "total_pembelian",
+                //     searchable: false,
+                //     orderable: false,
+                // },
+                // {
+                //     data: "hutang_pembelian",
+                //     name: "hutang_pembelian",
+                //     searchable: false,
+                //     orderable: false,
+                // },
             ],
             dataAjaxUrl: {
                 dari_tanggal,

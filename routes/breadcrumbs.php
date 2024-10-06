@@ -177,7 +177,7 @@ Breadcrumbs::for('labaBersih', function (BreadcrumbTrail $trail) {
 // Home > reportKasir
 Breadcrumbs::for('reportKasir', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push('Laporan Kasir', url('report/kasir'));
+    $trail->push('Laporan Barang Keluar', url('report/kasir'));
 });
 // Home > reportCustomer
 Breadcrumbs::for('reportCustomer', function (BreadcrumbTrail $trail) {
@@ -228,4 +228,9 @@ Breadcrumbs::for('pengaturan', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('menu', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Menu', url('setting/menu'));
+});
+// Home > permissions
+Breadcrumbs::for('permissions', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Permission', url('setting/permissions'));
 });

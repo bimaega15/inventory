@@ -14,7 +14,7 @@
 
             @include('purchase::kasir.partials.invoice')
 
-            @include('purchase::kasir.partials.metodePembayaran')
+            {{-- @include('purchase::kasir.partials.metodePembayaran') --}}
         </div>
         <!--/ Basic Bootstrap Table -->
     </div>

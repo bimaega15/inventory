@@ -22,7 +22,7 @@
                             <th>Tanggal Transaksi</th>
                             <th>Customer</th>
                             <th>Kasir</th>
-                            <th>Total Harga</th>
+                            <th>Total Barang Keluar</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>

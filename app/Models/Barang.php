@@ -49,6 +49,6 @@ class Barang extends Model
 
     public function getReportBarang()
     {
-        return Barang::dataTable()->with('penjualanProduct', 'orderBarang', 'kategori', 'satuan');
+        return Barang::dataTable()->with('penjualanProduct', 'pembelianProduct', 'orderBarang', 'kategori', 'satuan');
     }
 }

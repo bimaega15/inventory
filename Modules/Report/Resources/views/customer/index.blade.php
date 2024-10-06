@@ -30,9 +30,9 @@
                                 <th>Nama</th>
                                 <th>No. Whatsapp</th>
                                 <th>Alamat</th>
-                                <th>Transaksi Pembelian</th>
-                                <th>Total Pembelian</th>
-                                <th>Hutang Pembelian</th>
+                                <th>Qty Brg</th>
+                                {{-- <th>Total Pembelian</th>
+                                <th>Hutang Pembelian</th> --}}
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">

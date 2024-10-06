@@ -30,7 +30,7 @@
                                 <th>Tanggal</th>
                                 <th>Barang</th>
                                 <th>Supplier</th>
-                                <th>Terbeli</th>
+                                <th>Barang Masuk</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">

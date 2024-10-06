@@ -63,7 +63,7 @@
                                 <th>Nama Barang</th>
                                 <th>Harga</th>
                                 <th>Qty</th>
-                                <th>Sub total</th>
+                                {{-- <th>Sub total</th> --}}
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
@@ -72,19 +72,18 @@
                                     <td>{{ $item->barang->nama_barang }}</td>
                                     <td>{{ UtilsHelp::formatUang($item->barang->hargajual_barang) }}</td>
                                     <td>{{ $item->jumlah_penjualanproduct }}</td>
-                                    <td>{{ UtilsHelp::formatUang($item->subtotal_penjualanproduct) }}</td>
+                                    {{-- <td>{{ UtilsHelp::formatUang($item->subtotal_penjualanproduct) }}</td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2"></td>
-                                <td><strong>Total:</strong></td>
-                                <td colspan="1" class="text-end">
+                                <td class="text-end" colspan="2"><strong>Total:</strong></td>
+                                <td class="text-start">
                                     <strong>{{ UtilsHelp::formatUang($row->total_penjualan) }}</strong>
                                 </td>
                             </tr>
-
+{{-- 
                             @foreach ($row->penjualanPembayaran as $item)
                                 <tr>
                                     <td colspan="2"></td>
@@ -111,7 +110,7 @@
                                         <strong>{{ UtilsHelp::formatUang($getPenjualan['kembalian']) }}</strong>
                                     </td>
                                 </tr>
-                            @endif
+                            @endif --}}
                         </tfoot>
                     </table>
                 </div>

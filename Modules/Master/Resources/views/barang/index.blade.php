@@ -29,7 +29,7 @@
                             <th>Kode</th>
                             <th>Barang</th>
                             <th>Kategori</th>
-                            <th>Harga jual</th>
+                            <th>Harga Barang</th>
                             <th>Stok</th>
                             <th>Status</th>
                             <th>Aksi</th>
